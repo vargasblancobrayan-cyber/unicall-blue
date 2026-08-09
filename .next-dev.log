@@ -1,0 +1,17 @@
+
+> unicall-blue@0.1.0 dev
+> next dev --port 3000
+
+   ▲ Next.js 15.3.8
+   - Local:        http://localhost:3000
+   - Network:      http://192.168.1.13:3000
+   - Environments: .env.local
+
+ ✓ Starting...
+ ✓ Ready in 2.4s
+ ○ Compiling /staff-schedules ...
+ ✓ Compiled /staff-schedules in 2.9s (925 modules)
+ GET /staff-schedules?review=automation 200 in 3448ms
+ ○ Compiling / ...
+ ✓ Compiled / in 1024ms (944 modules)
+ GET /?blocked=1 200 in 1286ms

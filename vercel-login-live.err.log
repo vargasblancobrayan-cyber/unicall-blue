@@ -1,0 +1,12 @@
+Vercel CLI 39.1.1
+? Log in to Vercel (Use arrow keys)
+> Continue with GitHub
+  Continue with GitLab
+  Continue with Bitbucket
+  Continue with Email
+  Continue with SAML Single Sign-On
+ ─────────────────────────────────
+  Cancel[?25l[9G[10G[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G? Log in to Vercel Continue with GitHub[40G
+[?25h> Please visit the following URL in your web browser:
+> https://vercel.com/api/registration/login-with-github?mode=login&next=http%3A%2F%2Flocalhost%3A57534
+Waiting for GitHub authentication to be completed
