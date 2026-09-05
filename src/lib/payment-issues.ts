@@ -208,17 +208,10 @@ export async function createPaymentIssue(
     throw error;
   }
 
-  const { data: staffRows } = await supabase.from("profiles").select("id").eq("role", "staff").eq("status", "active");
-  const staffIds = ((staffRows || []) as Array<{ id: string }>).map((row) => row.id);
-  if (staffIds.length) {
-    await supabase.from("notifications").insert(
-      staffIds.map((recipientId) => ({
-        recipient_id: recipientId,
-        title: "Nueva novedad de pago",
-        message: `${profile.fullName} - ${profile.username} reporto ${payload.issueType} para ${payload.periodValue}.`
-      }))
-    );
-  }
+  await supabase.rpc("notify_staff_from_operator", {
+    p_title: "Nueva novedad de pago",
+    p_message: `${profile.fullName} - ${profile.username} reporto ${payload.issueType} para ${payload.periodValue}.`
+  });
   clearClientCache("unicall-blue:notifications:");
   return toIssue(data as PaymentIssueRow, { full_name: profile.fullName, username: profile.username, email: profile.email });
 }
