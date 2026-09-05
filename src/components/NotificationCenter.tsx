@@ -563,12 +563,18 @@ export function NotificationCenter({ role, full = false }: { role: "operator" | 
         </div>
       ) : null}
       {toast ? (
-        <div className="safe-toast-bottom fixed right-3 z-50 w-[min(92vw,380px)] rounded-md border border-brand-200 bg-white p-4 shadow-2xl sm:right-5">
-          <div className="flex gap-3">
-            <BellRing className="shrink-0 text-brand-600" size={20} />
-            <div>
+        <div
+          role="status"
+          aria-live="polite"
+          className="safe-toast-bottom toast-enter fixed right-3 z-50 w-[min(92vw,380px)] rounded-xl border border-brand-200 bg-white p-4 shadow-panel-lg sm:right-5"
+        >
+          <div className="flex items-start gap-3">
+            <span className="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-brand-50 text-brand-600">
+              <BellRing size={17} />
+            </span>
+            <div className="min-w-0">
               <p className="font-bold text-ink">{toast.title}</p>
-              <p className="mt-1 text-sm text-muted">{toast.message}</p>
+              <p className="mt-0.5 text-sm text-muted">{toast.message}</p>
             </div>
           </div>
         </div>

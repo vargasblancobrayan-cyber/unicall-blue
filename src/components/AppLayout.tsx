@@ -204,12 +204,16 @@ export function AppLayout({
 
   if (!accessVerified) {
     return (
-      <main className="grid min-h-screen place-items-center bg-soft p-6">
-        <section className="w-full max-w-sm rounded-md border border-line bg-white p-6 text-center shadow-sm">
-          <div className="mx-auto mb-4 w-fit"><AppLogo /></div>
-          <ShieldCheck className="mx-auto animate-pulse text-brand-600" size={30} />
-          <p className="mt-3 font-bold text-ink">Verificando acceso</p>
-          <p className="mt-1 text-sm text-muted">Confirmando que tu operador se encuentra activo.</p>
+      <main className="grid min-h-dvh place-items-center bg-soft p-6">
+        <section className="card w-full max-w-sm p-8 text-center shadow-panel-lg">
+          <div className="mx-auto mb-6 w-fit"><AppLogo /></div>
+          <div className="mx-auto grid h-12 w-12 place-items-center rounded-2xl bg-brand-50">
+            <ShieldCheck className="animate-pulse text-brand-600" size={26} />
+          </div>
+          <div className="mt-5 space-y-2">
+            <div className="mx-auto h-4 w-40 animate-pulse rounded bg-slate-200/80" />
+            <div className="mx-auto h-3 w-56 animate-pulse rounded bg-slate-200/60" />
+          </div>
         </section>
       </main>
     );
