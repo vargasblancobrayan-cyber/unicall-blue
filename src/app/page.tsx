@@ -163,16 +163,21 @@ export default function LoginPage() {
 
   return (
     <main className="flex min-h-dvh">
-      <section className="relative hidden w-5/12 flex-col justify-between overflow-hidden bg-gradient-to-br from-slate-800 via-brand-600 to-cyan p-10 text-white lg:flex">
-        <div className="absolute right-[-80px] top-[-80px] h-72 w-72 rounded-full bg-white/10" />
-        <div className="absolute bottom-[-70px] left-[-70px] h-60 w-60 rounded-full bg-white/10" />
+      <section className="relative hidden w-5/12 flex-col justify-between overflow-hidden bg-gradient-to-br from-slate-900 via-brand-700 to-cyan-600 p-10 text-white lg:flex">
+        <div className="pointer-events-none absolute -right-24 -top-24 h-80 w-80 rounded-full bg-white/10 blur-2xl" />
+        <div className="pointer-events-none absolute -bottom-24 -left-24 h-72 w-72 rounded-full bg-cyan-400/20 blur-3xl" />
+        <div className="pointer-events-none absolute inset-0 opacity-[0.06]" style={{ backgroundImage: "radial-gradient(circle at 1px 1px, #fff 1px, transparent 0)", backgroundSize: "28px 28px" }} />
         <div className="relative z-10">
           <div className="[&_*]:text-white">
             <AppLogo />
           </div>
         </div>
         <div className="relative z-10 max-w-md">
-          <h1 className="text-4xl font-bold leading-tight">
+          <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-white/90 backdrop-blur">
+            <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
+            Plataforma operativa
+          </span>
+          <h1 className="mt-5 text-4xl font-bold leading-tight">
             Gestion operativa para tu equipo de ventas
           </h1>
           <p className="mt-4 text-white/75">
@@ -187,7 +192,7 @@ export default function LoginPage() {
               [ShieldCheck, "Validacion de rechazos y multas"]
             ].map(([Icon, text]) => (
               <div key={text as string} className="flex items-center gap-3">
-                <span className="grid h-9 w-9 place-items-center rounded-md bg-white/15">
+                <span className="grid h-9 w-9 place-items-center rounded-lg border border-white/15 bg-white/10 backdrop-blur">
                   <Icon size={19} />
                 </span>
                 {text as string}
@@ -200,12 +205,14 @@ export default function LoginPage() {
         </p>
       </section>
 
-      <section className="flex flex-1 items-center justify-center bg-soft p-4 sm:p-6">
-        <div className="w-full max-w-md">
+      <section className="relative flex flex-1 items-center justify-center overflow-hidden bg-soft p-4 sm:p-6">
+        <div className="pointer-events-none absolute -right-32 top-0 h-96 w-96 rounded-full bg-brand-100/40 blur-3xl" />
+        <div className="pointer-events-none absolute -left-32 bottom-0 h-96 w-96 rounded-full bg-cyan-100/40 blur-3xl" />
+        <div className="relative w-full max-w-md">
           <div className="mb-8 lg:hidden">
             <AppLogo />
           </div>
-          <div className="card p-6">
+          <div className="card p-6 shadow-panel-lg sm:p-8">
             <div className="mb-6">
               <p className="text-sm font-semibold text-brand-600">Iniciar sesion</p>
               <h2 className="mt-1 text-2xl font-bold text-ink">Bienvenido de nuevo</h2>
