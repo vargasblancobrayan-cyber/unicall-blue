@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { Download, Eye, FileText, Trash2 } from "lucide-react";
 import { AppLayout } from "@/components/AppLayout";
+import { EmptyState } from "@/components/EmptyState";
 import { Modal } from "@/components/Modal";
 import {
   CertificateRequest,
@@ -232,7 +233,7 @@ export default function OperatorCertificatesPage() {
                 </div>
               );
             }) : (
-              <div className="p-5 text-sm text-muted">Aun no tienes solicitudes de certificado.</div>
+              <EmptyState title="Aun no tienes solicitudes" description="Cuando solicites un certificado aparecera aqui." />
             )}
           </div>
         </div>

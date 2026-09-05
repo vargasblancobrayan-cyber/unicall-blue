@@ -11,8 +11,9 @@ import {
   XAxis,
   YAxis
 } from "recharts";
-import { Eye, PackageCheck, ShoppingCart } from "lucide-react";
+import { Eye, PackageCheck, ReceiptText, ShoppingCart, Users } from "lucide-react";
 import { AppLayout } from "@/components/AppLayout";
+import { EmptyState } from "@/components/EmptyState";
 import { MetricCard } from "@/components/MetricCard";
 import { Modal } from "@/components/Modal";
 import { CommercialRecord, ShiftRecord, readStoredRecords, readStoredShiftRecords } from "@/lib/records";
@@ -139,10 +140,10 @@ export default function StaffDashboard() {
   return (
     <AppLayout role="staff" title="Panel de staff">
       <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-        <MetricCard label="Operadores con jornada" value={String(totals.activeOperators)} helper="Registrados hoy" />
-        <MetricCard label="Ventas hoy" value={String(totals.todaySales)} helper="Meta: 1 por hora" />
-        <MetricCard label="Por seguir" value={String(totals.followUps)} helper="Pedidos pendientes de gestion" />
-        <MetricCard label="Cheque promedio" value={totals.averageCheck ? totals.averageCheck.toFixed(2) : "-"} helper="Unidades vendidas / compras" />
+        <MetricCard label="Operadores con jornada" value={String(totals.activeOperators)} helper="Registrados hoy" icon={<Users size={18} />} />
+        <MetricCard label="Ventas hoy" value={String(totals.todaySales)} helper="Meta: 1 por hora" icon={<ShoppingCart size={18} />} />
+        <MetricCard label="Por seguir" value={String(totals.followUps)} helper="Pedidos pendientes de gestion" icon={<PackageCheck size={18} />} />
+        <MetricCard label="Cheque promedio" value={totals.averageCheck ? totals.averageCheck.toFixed(2) : "-"} helper="Unidades vendidas / compras" icon={<ReceiptText size={18} />} />
       </div>
 
       <section className="mt-6">
@@ -273,7 +274,7 @@ export default function StaffDashboard() {
               ))}
             </div>
           ) : (
-            <div className="rounded-md bg-soft p-5 text-center text-sm text-muted">No hay movimientos registrados hoy para este usuario.</div>
+            <EmptyState title="Sin movimientos" description="No hay movimientos registrados hoy para este usuario." />
           )}
           <button className="btn-secondary w-full justify-center" onClick={() => setSelectedOperator(null)}>Cerrar</button>
         </div>

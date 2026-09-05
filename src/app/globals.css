@@ -68,23 +68,48 @@ html[data-app-theme="dark"] body {
 }
 
 .input-base {
-  @apply w-full rounded-md border border-line bg-white px-3 py-2.5 text-sm text-ink outline-none transition focus:border-brand-500 focus:ring-2 focus:ring-brand-100;
+  @apply w-full rounded-lg border border-line bg-white px-3 py-2.5 text-sm text-ink outline-none transition duration-200 ease-out focus:border-brand-500 focus:ring-4 focus:ring-brand-100/70;
 }
 
 .btn-primary {
-  @apply inline-flex items-center gap-2 rounded-md bg-brand-600 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-brand-700 disabled:cursor-not-allowed disabled:opacity-60;
+  @apply inline-flex items-center gap-2 rounded-lg bg-brand-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition duration-200 ease-out hover:bg-brand-700 hover:shadow-brand-glow active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-60 disabled:shadow-none;
 }
 
 .btn-secondary {
-  @apply inline-flex items-center gap-2 rounded-md border border-line bg-white px-4 py-2.5 text-sm font-semibold text-ink transition hover:bg-soft;
+  @apply inline-flex items-center gap-2 rounded-lg border border-line bg-white px-4 py-2.5 text-sm font-semibold text-ink shadow-sm transition duration-200 ease-out hover:bg-soft hover:border-slate-300 active:scale-[0.98];
 }
 
 .card {
-  @apply rounded-lg border border-line bg-panel shadow-panel;
+  @apply rounded-xl border border-line bg-panel shadow-panel;
 }
 
 .table-cell {
   @apply border-b border-line px-4 py-3 text-sm;
+}
+
+/* Scrollbar sutil y consistente */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(100, 116, 139, 0.35) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: rgba(100, 116, 139, 0.3);
+  border-radius: 8px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: rgba(100, 116, 139, 0.5);
+}
+
+/* Selección de texto con color de marca */
+::selection {
+  background: rgba(37, 99, 235, 0.18);
 }
 
 html[data-app-theme="gray"] .bg-soft,

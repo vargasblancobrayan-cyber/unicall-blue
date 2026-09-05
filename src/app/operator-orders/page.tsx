@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { CheckCircle2, Clipboard, Gauge, PackageCheck, Pencil, Search, Target, Trash2, TrendingUp, X } from "lucide-react";
 import { AppLayout } from "@/components/AppLayout";
+import { EmptyState } from "@/components/EmptyState";
 import { Modal } from "@/components/Modal";
 import { MonthNavigator } from "@/components/PeriodNavigator";
 import { CommercialRecord, readStoredRecords, writeStoredRecords } from "@/lib/records";
@@ -471,13 +472,15 @@ export default function OperatorOrdersPage() {
                 </table>
               </div>
         ) : (
-          <div className="p-8 text-center text-sm text-muted">
-            <p className="font-semibold text-ink">No hay pedidos en {statusLabel(resultFilter)}.</p>
-            <p className="mt-1">Cambia de estado arriba o revisa todos los pedidos del mes.</p>
-            <button className="btn-secondary mx-auto mt-4 justify-center" onClick={() => setResultFilter("TODOS")}>
-              Ver todos
-            </button>
-          </div>
+          <EmptyState
+            title={`No hay pedidos en ${statusLabel(resultFilter)}`}
+            description="Cambia de estado arriba o revisa todos los pedidos del mes."
+            action={
+              <button className="btn-secondary justify-center" onClick={() => setResultFilter("TODOS")}>
+                Ver todos
+              </button>
+            }
+          />
         )}
       </section>
 
