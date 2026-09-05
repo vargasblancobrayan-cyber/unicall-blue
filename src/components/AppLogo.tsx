@@ -6,48 +6,44 @@ export function AppLogo({ compact = false }: { compact?: boolean }) {
         width={compact ? 34 : 40}
         height={compact ? 34 : 40}
         aria-hidden="true"
-        className="shrink-0 drop-shadow-[0_4px_14px_rgba(29,78,216,0.4)]"
+        className="shrink-0 drop-shadow-[0_4px_16px_rgba(29,78,216,0.45)]"
       >
         <defs>
           <linearGradient id="ub-bg" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stopColor="#3b82f6" />
-            <stop offset="45%" stopColor="#1d4ed8" />
-            <stop offset="100%" stopColor="#1e1b4b" />
+            <stop offset="0%" stopColor="#60a5fa" />
+            <stop offset="50%" stopColor="#2563eb" />
+            <stop offset="100%" stopColor="#1e3a8a" />
           </linearGradient>
-          <radialGradient id="ub-gloss" cx="0.22" cy="0.12" r="0.85">
-            <stop offset="0%" stopColor="#ffffff" stopOpacity="0.4" />
-            <stop offset="55%" stopColor="#ffffff" stopOpacity="0.06" />
+          <radialGradient id="ub-gloss" cx="0.25" cy="0.15" r="0.9">
+            <stop offset="0%" stopColor="#ffffff" stopOpacity="0.5" />
+            <stop offset="45%" stopColor="#ffffff" stopOpacity="0.08" />
             <stop offset="100%" stopColor="#ffffff" stopOpacity="0" />
           </radialGradient>
-          <linearGradient id="ub-headset" x1="0" y1="0" x2="0" y2="1">
+          <linearGradient id="ub-u" x1="0" y1="0" x2="0" y2="1">
             <stop offset="0%" stopColor="#ffffff" />
-            <stop offset="100%" stopColor="#c7d2fe" />
+            <stop offset="100%" stopColor="#bfdbfe" />
           </linearGradient>
-          <linearGradient id="ub-wave" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0%" stopColor="#93c5fd" />
-            <stop offset="100%" stopColor="#e0e7ff" />
+          <linearGradient id="ub-eq" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="#7dd3fc" />
+            <stop offset="100%" stopColor="#38bdf8" />
           </linearGradient>
         </defs>
-        <rect x="2" y="2" width="60" height="60" rx="17" fill="url(#ub-bg)" />
-        <rect x="2" y="2" width="60" height="60" rx="17" fill="url(#ub-gloss)" />
-        <rect x="2.5" y="2.5" width="59" height="59" rx="16.5" fill="none" stroke="rgba(255,255,255,0.22)" strokeWidth="1" />
-        {/* Banda en forma de U (la U de Unicall) */}
+        {/* Fondo redondeado */}
+        <rect x="2" y="2" width="60" height="60" rx="18" fill="url(#ub-bg)" />
+        <rect x="2" y="2" width="60" height="60" rx="18" fill="url(#ub-gloss)" />
+        <rect x="2.5" y="2.5" width="59" height="59" rx="17.5" fill="none" stroke="rgba(255,255,255,0.25)" strokeWidth="1" />
+        {/* Monograma U */}
         <path
-          d="M17 32 a15 11.5 0 0 1 30 0"
+          d="M22 18 v14 a10 10 0 0 0 20 0 v-14"
           fill="none"
-          stroke="url(#ub-headset)"
-          strokeWidth="5.5"
+          stroke="url(#ub-u)"
+          strokeWidth="6"
           strokeLinecap="round"
         />
-        {/* Copas del auricular */}
-        <path d="M17 32.5 v5.5 a6 6 0 0 0 12 0 v-5.5" fill="url(#ub-headset)" />
-        <path d="M35 32.5 v5.5 a6 6 0 0 0 12 0 v-5.5" fill="url(#ub-headset)" />
-        {/* Micrófono con punto de señal */}
-        <path d="M26 43.5 v2 a6 6 0 0 0 12 0 v-2" fill="none" stroke="url(#ub-headset)" strokeWidth="3.6" strokeLinecap="round" />
-        <circle cx="32" cy="50.5" r="1.8" fill="#93c5fd" />
-        {/* Ondas de sonido emergiendo de la copa derecha */}
-        <path d="M47 21 a9.5 9.5 0 0 1 0 7" fill="none" stroke="url(#ub-wave)" strokeWidth="2.4" strokeLinecap="round" />
-        <path d="M52 17.5 a14 14 0 0 1 0 12" fill="none" stroke="url(#ub-wave)" strokeWidth="2.4" strokeLinecap="round" opacity="0.75" />
+        {/* Ecualizador de sonido dentro de la U */}
+        <rect x="25" y="30" width="3.4" height="8" rx="1.7" fill="url(#ub-eq)" />
+        <rect x="30.3" y="26" width="3.4" height="12" rx="1.7" fill="url(#ub-eq)" />
+        <rect x="35.6" y="29" width="3.4" height="9" rx="1.7" fill="url(#ub-eq)" />
       </svg>
       {!compact ? (
         <span className="text-lg font-bold tracking-tight leading-none text-ink">

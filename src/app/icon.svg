@@ -1,28 +1,25 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#3b82f6"/>
-      <stop offset="45%" stop-color="#1d4ed8"/>
-      <stop offset="100%" stop-color="#1e1b4b"/>
+      <stop offset="0%" stop-color="#60a5fa"/>
+      <stop offset="50%" stop-color="#2563eb"/>
+      <stop offset="100%" stop-color="#1e3a8a"/>
     </linearGradient>
-    <radialGradient id="gloss" cx="0.22" cy="0.12" r="0.85">
-      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.4"/>
-      <stop offset="55%" stop-color="#ffffff" stop-opacity="0.06"/>
+    <radialGradient id="gloss" cx="0.25" cy="0.15" r="0.9">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.5"/>
+      <stop offset="45%" stop-color="#ffffff" stop-opacity="0.08"/>
       <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
     </radialGradient>
-    <linearGradient id="wave" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#93c5fd"/>
-      <stop offset="100%" stop-color="#e0e7ff"/>
+    <linearGradient id="eq" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#7dd3fc"/>
+      <stop offset="100%" stop-color="#38bdf8"/>
     </linearGradient>
   </defs>
-  <rect x="2" y="2" width="60" height="60" rx="17" fill="url(#bg)"/>
-  <rect x="2" y="2" width="60" height="60" rx="17" fill="url(#gloss)"/>
-  <rect x="2.5" y="2.5" width="59" height="59" rx="16.5" fill="none" stroke="#ffffff38" stroke-width="1"/>
-  <path d="M17 32 a15 11.5 0 0 1 30 0" fill="none" stroke="#ffffff" stroke-width="5.5" stroke-linecap="round"/>
-  <path d="M17 32.5 v5.5 a6 6 0 0 0 12 0 v-5.5" fill="#ffffff"/>
-  <path d="M35 32.5 v5.5 a6 6 0 0 0 12 0 v-5.5" fill="#ffffff"/>
-  <path d="M26 43.5 v2 a6 6 0 0 0 12 0 v-2" fill="none" stroke="#e0e7ff" stroke-width="3.6" stroke-linecap="round"/>
-  <circle cx="32" cy="50.5" r="1.8" fill="#93c5fd"/>
-  <path d="M47 21 a9.5 9.5 0 0 1 0 7" fill="none" stroke="url(#wave)" stroke-width="2.4" stroke-linecap="round"/>
-  <path d="M52 17.5 a14 14 0 0 1 0 12" fill="none" stroke="url(#wave)" stroke-width="2.4" stroke-linecap="round" opacity="0.75"/>
+  <rect x="2" y="2" width="60" height="60" rx="18" fill="url(#bg)"/>
+  <rect x="2" y="2" width="60" height="60" rx="18" fill="url(#gloss)"/>
+  <rect x="2.5" y="2.5" width="59" height="59" rx="17.5" fill="none" stroke="#ffffff40" stroke-width="1"/>
+  <path d="M22 18 v14 a10 10 0 0 0 20 0 v-14" fill="none" stroke="#ffffff" stroke-width="6" stroke-linecap="round"/>
+  <rect x="25" y="30" width="3.4" height="8" rx="1.7" fill="url(#eq)"/>
+  <rect x="30.3" y="26" width="3.4" height="12" rx="1.7" fill="url(#eq)"/>
+  <rect x="35.6" y="29" width="3.4" height="9" rx="1.7" fill="url(#eq)"/>
 </svg>
