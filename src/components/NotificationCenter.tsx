@@ -536,7 +536,7 @@ export function NotificationCenter({ role, full = false }: { role: "operator" | 
         {unread ? <span className="absolute -right-1 -top-1 min-w-5 rounded-full bg-red-600 px-1 text-center text-[11px] font-bold leading-5 text-white">{unread > 99 ? "99+" : unread}</span> : null}
       </button>
       {open ? (
-        <div className="fixed inset-x-2 top-16 z-40 mx-auto w-auto overflow-hidden rounded-md border border-line bg-white shadow-xl sm:absolute sm:inset-x-auto sm:right-0 sm:top-12 sm:w-[min(92vw,390px)]">
+        <div className="safe-popover-top fixed inset-x-2 z-40 mx-auto w-auto overflow-hidden rounded-md border border-line bg-white shadow-xl sm:absolute sm:inset-x-auto sm:right-0 sm:w-[min(92vw,390px)]">
           <div className="flex items-center justify-between border-b border-line p-4">
             <div>
               <p className="font-bold text-ink">{urgent ? "Atencion requerida" : "Centro de avisos"}</p>
@@ -563,7 +563,7 @@ export function NotificationCenter({ role, full = false }: { role: "operator" | 
         </div>
       ) : null}
       {toast ? (
-        <div className="fixed bottom-20 right-3 z-50 w-[min(92vw,380px)] rounded-md border border-brand-200 bg-white p-4 shadow-2xl sm:bottom-5 sm:right-5">
+        <div className="safe-toast-bottom fixed right-3 z-50 w-[min(92vw,380px)] rounded-md border border-brand-200 bg-white p-4 shadow-2xl sm:right-5">
           <div className="flex gap-3">
             <BellRing className="shrink-0 text-brand-600" size={20} />
             <div>

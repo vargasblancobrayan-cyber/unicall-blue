@@ -307,10 +307,10 @@ export default function StaffShiftChangesPage() {
         <div className="grid lg:grid-cols-[1fr_280px]">
           <div className="grid grid-cols-7 gap-px bg-line p-px">
             {["Lun", "Mar", "Mie", "Jue", "Vie", "Sab", "Dom"].map((dayName) => (
-              <div key={dayName} className="bg-soft p-2 text-center text-xs font-bold uppercase text-muted">{dayName}</div>
+              <div key={dayName} className="bg-soft p-1 text-center text-[10px] font-bold uppercase text-muted sm:p-2 sm:text-xs">{dayName}</div>
             ))}
             {Array.from({ length: (new Date(`${month}-01T00:00:00`).getDay() + 6) % 7 }).map((_, index) => (
-              <div key={`empty-${index}`} className="min-h-20 bg-slate-100" />
+              <div key={`empty-${index}`} className="min-h-12 bg-slate-100 sm:min-h-20" />
             ))}
             {calendarDays.map((day) => {
               const changes = approvedByDate.get(day.date) || [];
@@ -318,22 +318,22 @@ export default function StaffShiftChangesPage() {
               return (
                 <button
                   key={day.date}
-                  className={`min-h-24 p-2 text-left transition ${isSelected ? "ring-2 ring-brand-600" : ""} ${changes.length ? "bg-white text-ink" : day.isWorkDay ? "bg-brand-600 text-white" : "bg-white text-muted"}`}
+                  className={`min-h-12 p-1 text-left transition sm:min-h-24 sm:p-2 ${isSelected ? "ring-2 ring-brand-600" : ""} ${changes.length ? "bg-white text-ink" : day.isWorkDay ? "bg-brand-600 text-white" : "bg-white text-muted"}`}
                   onClick={() => setSelectedDate(day.date)}
                 >
                   <div className="flex items-start justify-between gap-2">
-                    <span className="text-lg font-black">{day.day}</span>
-                    <span className="text-xs font-bold uppercase">{day.weekday}</span>
+                    <span className="text-base font-black sm:text-lg">{day.day}</span>
+                    <span className="hidden text-xs font-bold uppercase sm:block">{day.weekday}</span>
                   </div>
-                  <p className="mt-2 text-xs font-black">{day.isWorkDay ? "Trabajamos" : "Descanso"}</p>
-                  {changes.slice(0, 2).map((change) => (
-                    <p key={`${change.id}-${day.date}`} className={`mt-1 truncate rounded px-1.5 py-0.5 text-[11px] font-black text-white ${change.color === "green" ? "bg-emerald-600" : "bg-blue-600"}`}>
+                  <p className="mt-1 hidden text-xs font-black sm:block">{day.isWorkDay ? "Trabajamos" : "Descanso"}</p>
+                  {changes.slice(0, 1).map((change) => (
+                    <p key={`${change.id}-${day.date}`} className={`mt-0.5 hidden truncate rounded px-1.5 py-0.5 text-[11px] font-black text-white sm:mt-1 sm:block ${change.color === "green" ? "bg-emerald-600" : "bg-blue-600"}`}>
                       {change.returnDate === day.date
                         ? `${change.operatorUsername || change.operator} devuelve`
                         : `${change.replacementUser} cubre a ${change.operatorUsername || change.operator}`}
                     </p>
                   ))}
-                  {changes.length > 2 ? <p className="mt-1 text-[11px] font-black">+{changes.length - 2} cambios</p> : null}
+                  {changes.length >0 ? <p className="mt-0.5 text-[10px] font-black sm:mt-1 sm:text-[11px]">{changes.length}+</p> : null}
                 </button>
               );
             })}

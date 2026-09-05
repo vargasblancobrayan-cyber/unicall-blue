@@ -162,7 +162,7 @@ export default function LoginPage() {
   }
 
   return (
-    <main className="flex min-h-screen">
+    <main className="flex min-h-dvh">
       <section className="relative hidden w-5/12 flex-col justify-between overflow-hidden bg-gradient-to-br from-slate-800 via-brand-600 to-cyan p-10 text-white lg:flex">
         <div className="absolute right-[-80px] top-[-80px] h-72 w-72 rounded-full bg-white/10" />
         <div className="absolute bottom-[-70px] left-[-70px] h-60 w-60 rounded-full bg-white/10" />

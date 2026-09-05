@@ -591,10 +591,10 @@ export default function OperatorWorkdayPage() {
         <div className="grid gap-4 bg-slate-50 p-4 xl:grid-cols-[minmax(0,1fr)_300px]">
         <div className="grid grid-cols-7 gap-px overflow-hidden rounded-md border border-line bg-line">
           {["Lun", "Mar", "Mie", "Jue", "Vie", "Sab", "Dom"].map((dayName) => (
-            <div key={dayName} className="bg-soft p-2 text-center text-xs font-bold uppercase text-muted">{dayName}</div>
+            <div key={dayName} className="bg-soft p-1 text-center text-[10px] font-bold uppercase text-muted sm:p-2 sm:text-xs">{dayName}</div>
           ))}
           {Array.from({ length: (new Date(`${month}-01T00:00:00`).getDay() + 6) % 7 }).map((_, index) => (
-            <div key={`empty-${index}`} className="min-h-24 bg-white" />
+            <div key={`empty-${index}`} className="min-h-14 bg-white sm:min-h-24" />
           ))}
           {calendarDays.map((day) => {
             const dayRecords = recordsByDate.get(day.date) || [];
@@ -636,26 +636,26 @@ export default function OperatorWorkdayPage() {
                 type="button"
                 key={day.date}
                 onClick={() => setSelectedDate(day.date)}
-                className={`min-h-24 border p-2.5 text-left transition hover:relative hover:z-10 hover:brightness-105 hover:shadow-lg ${colorClass} ${selected ? "relative z-10 ring-4 ring-inset ring-cyan-300" : ""}`}
+                className={`min-h-14 border p-1 text-left transition hover:relative hover:z-10 hover:brightness-105 hover:shadow-lg sm:min-h-24 sm:p-2.5 ${colorClass} ${selected ? "relative z-10 ring-4 ring-inset ring-cyan-300" : ""}`}
               >
                 <div className="flex items-start justify-between gap-2">
-                  <span className="text-lg font-black">{day.day}</span>
-                  <span className="text-[11px] font-bold uppercase">{day.weekday}</span>
+                  <span className="text-base font-black sm:text-lg">{day.day}</span>
+                  <span className="hidden text-[11px] font-bold uppercase sm:block">{day.weekday}</span>
                 </div>
-                <p className="mt-1 truncate text-xs font-bold">{open ? "Abierta" : extra ? "Extra" : worked ? "Trabajado" : day.isWorkDay ? "Programado" : "Descanso"}</p>
+                <p className="mt-1 hidden truncate text-xs font-bold sm:block">{open ? "Abierta" : extra ? "Extra" : worked ? "Trabajado" : day.isWorkDay ? "Programado" : "Descanso"}</p>
                 {approvedChange ? (
-                  <p className="mt-1 truncate rounded bg-white/20 px-1.5 py-0.5 text-[11px] font-black text-white">
+                  <p className="mt-0.5 hidden truncate rounded bg-white/20 px-1.5 py-0.5 text-[11px] font-black text-white sm:mt-1 sm:block">
                     {approvedCoverage
                       ? `Lo cubre ${approvedCoverage.replacementUser}`
                       : `Cubres a ${approvedReturn?.replacementUser}`}
                   </p>
                 ) : pendingChange ? (
-                  <p className="mt-1 truncate rounded bg-amber-100 px-1.5 py-0.5 text-[11px] font-black text-amber-800">
+                  <p className="mt-0.5 hidden truncate rounded bg-amber-100 px-1.5 py-0.5 text-[11px] font-black text-amber-800 sm:mt-1 sm:block">
                     {pendingCoverage ? "Intercambio pendiente" : "Devolucion pendiente"}
                   </p>
                 ) : null}
                 {worked ? (
-                  <div className="mt-1 flex flex-wrap items-center gap-1 text-[11px] font-bold">
+                  <div className="mt-0.5 flex flex-wrap items-center gap-1 text-[11px] font-bold sm:mt-1">
                     <p>{formatHours(dayHours)}</p>
                     {hasFailure ? <span className="rounded-full bg-red-100 px-1.5 py-0.5 text-red-700">Falla</span> : null}
                     {false ? (

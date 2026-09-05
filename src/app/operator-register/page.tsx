@@ -149,7 +149,7 @@ function OperatorRegisterForm() {
 
   if (registeredEmail) {
     return (
-      <main className="flex min-h-screen items-center justify-center bg-soft p-4 sm:p-6">
+      <main className="flex min-h-dvh items-center justify-center bg-soft p-4 sm:p-6">
         <section className="w-full max-w-xl card p-6">
           <AppLogo />
           <div className="mt-8 rounded-md border border-emerald-200 bg-emerald-50 p-5 text-emerald-900">
@@ -192,7 +192,7 @@ function OperatorRegisterForm() {
   }
 
   return (
-    <main className="flex min-h-screen items-center justify-center bg-soft p-4 sm:p-6">
+    <main className="flex min-h-dvh items-center justify-center bg-soft p-4 sm:p-6">
       <section className="w-full max-w-xl card p-6">
         <AppLogo />
         <div className="mt-8">
