@@ -9,9 +9,36 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Unicall Blue - Operaciones de Call Center",
+  title: {
+    default: "Unicall Blue - Operaciones de Call Center",
+    template: "%s | Unicall Blue"
+  },
   description:
-    "Unicall Blue centraliza ventas, rechazos, jornadas, operadores y reportes de call center."
+    "Unicall Blue centraliza ventas, rechazos, jornadas, operadores y reportes de call center.",
+  applicationName: "Unicall Blue",
+  keywords: ["call center", "operaciones", "ventas", "rechazos", "jornadas", "Unicall Blue"],
+  icons: {
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico", sizes: "any" }
+    ],
+    apple: "/apple-icon.png"
+  },
+  openGraph: {
+    title: "Unicall Blue - Operaciones de Call Center",
+    description:
+      "Unicall Blue centraliza ventas, rechazos, jornadas, operadores y reportes de call center.",
+    type: "website",
+    siteName: "Unicall Blue",
+    images: [{ url: "/icon-512.png", width: 512, height: 512, alt: "Unicall Blue" }]
+  },
+  twitter: {
+    card: "summary",
+    title: "Unicall Blue - Operaciones de Call Center",
+    description:
+      "Unicall Blue centraliza ventas, rechazos, jornadas, operadores y reportes de call center.",
+    images: ["/icon-512.png"]
+  }
 };
 
 export const viewport: Viewport = {
