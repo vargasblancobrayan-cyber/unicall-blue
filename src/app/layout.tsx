@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   keywords: ["call center", "operaciones", "ventas", "rechazos", "jornadas", "Unicall Blue"],
   icons: {
     icon: [
-      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/logo-v2.svg", type: "image/svg+xml" },
       { url: "/favicon.ico", sizes: "any" }
     ],
     apple: "/apple-icon.png"
@@ -30,14 +30,14 @@ export const metadata: Metadata = {
       "Unicall Blue centraliza ventas, rechazos, jornadas, operadores y reportes de call center.",
     type: "website",
     siteName: "Unicall Blue",
-    images: [{ url: "/icon-512-v2.png", width: 512, height: 512, alt: "Unicall Blue" }]
+    images: [{ url: "/icon-512-v3.png", width: 512, height: 512, alt: "Unicall Blue" }]
   },
   twitter: {
     card: "summary",
     title: "Unicall Blue - Operaciones de Call Center",
     description:
       "Unicall Blue centraliza ventas, rechazos, jornadas, operadores y reportes de call center.",
-    images: ["/icon-512-v2.png"]
+    images: ["/icon-512-v3.png"]
   }
 };
 
