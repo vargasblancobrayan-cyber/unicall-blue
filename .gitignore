@@ -25,3 +25,9 @@ AppData
 outputs
 work
 vercel-login-*
+make-github-ready*
+prepare-github-upload*
+download*
+*.tsbuildinfo
+*.ps1
+*.cmd
