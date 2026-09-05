@@ -13,10 +13,12 @@ import {
   Headphones,
   Home,
   LogOut,
+  Menu,
   PackageCheck,
   ShieldCheck,
   UserCog,
-  Users
+  Users,
+  X
 } from "lucide-react";
 import { AppLogo } from "./AppLogo";
 import { AppThemeControl } from "./AppThemeControl";
@@ -88,6 +90,7 @@ export function AppLayout({
   const router = useRouter();
   const [profile, setProfile] = useState<CurrentProfile | null>(() => readCachedProfile());
   const [accessVerified, setAccessVerified] = useState(role !== "operator" || !isSupabaseConfigured);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const visibleNav = useMemo(
     () =>
       nav[role].filter((item) =>
@@ -101,6 +104,10 @@ export function AppLayout({
     role === "staff" && staffPanelTabs.some((item) => pathname === item.href);
   const showStaffScheduleTabs =
     role === "staff" && staffScheduleTabs.some((item) => pathname === item.href);
+
+  useEffect(() => {
+    setMobileMenuOpen(false);
+  }, [pathname]);
 
   useEffect(() => {
     let active = true;
@@ -252,21 +259,89 @@ export function AppLayout({
         </Link>
       </aside>
 
-      <main className="lg:pl-64">
-        <header className="sticky top-0 z-10 flex h-16 items-center justify-between border-b border-line bg-white/95 px-4 backdrop-blur lg:px-8">
-          <div>
-            <p className="text-xs font-semibold uppercase text-muted">
-              {role === "staff" ? "Vista Staff" : "Vista Operador"}
-            </p>
-            <h1 className="text-xl font-bold text-ink">{title}</h1>
+      {mobileMenuOpen ? (
+        <div className="fixed inset-0 z-40 lg:hidden">
+          <div className="absolute inset-0 bg-slate-950/50" onClick={() => setMobileMenuOpen(false)} aria-hidden="true" />
+          <aside className="absolute inset-y-0 left-0 flex w-72 max-w-[85vw] flex-col overflow-y-auto border-r border-line bg-white p-4 shadow-2xl">
+            <div className="flex items-center justify-between">
+              <AppLogo />
+              <button
+                type="button"
+                aria-label="Cerrar menu"
+                onClick={() => setMobileMenuOpen(false)}
+                className="grid h-9 w-9 place-items-center rounded-md text-muted hover:bg-soft hover:text-ink"
+              >
+                <X size={20} />
+              </button>
+            </div>
             {role === "operator" && profile ? (
-              <p className="mt-0.5 text-xs font-semibold text-brand-700">
-                Operador: {profile.fullName} · {profile.username}
-              </p>
+              <div className="mt-4 rounded-md border border-brand-100 bg-brand-50 p-3">
+                <p className="text-xs font-bold uppercase text-brand-700">Operador conectado</p>
+                <p className="mt-1 truncate text-sm font-bold text-ink">{profile.fullName}</p>
+                <p className="mt-0.5 truncate text-xs font-semibold text-muted">{profile.username}</p>
+              </div>
             ) : null}
+            <nav className="mt-5 flex-1 space-y-1 pb-6">
+              {visibleNav.map((item) => {
+                const Icon = item.icon;
+                const baseHref = item.href.split("#")[0];
+                const active =
+                  pathname === baseHref ||
+                  (role === "staff" && baseHref === "/staff-notifications" && pathname === "/staff-notification-history") ||
+                  (role === "staff" &&
+                    baseHref === "/staff-dashboard" &&
+                    ["/staff-performance", "/staff-reports"].includes(pathname)) ||
+                  (role === "staff" &&
+                    baseHref === "/staff-schedules" &&
+                    staffScheduleTabs.some((tab) => tab.href === pathname));
+                return (
+                  <Link
+                    key={item.label}
+                    href={item.href}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className={`flex items-center gap-3 rounded-md px-3 py-2.5 text-sm font-medium ${
+                      active ? "bg-brand-50 text-brand-700" : "text-muted hover:bg-soft hover:text-ink"
+                    }`}
+                  >
+                    <Icon size={19} />
+                    {item.label}
+                  </Link>
+                );
+              })}
+            </nav>
+            <Link href="/" onClick={signOut} className="btn-secondary w-full justify-center">
+              <LogOut size={16} />
+              Salir
+            </Link>
+          </aside>
+        </div>
+      ) : null}
+
+      <main className="lg:pl-64">
+        <header className="sticky top-0 z-30 flex h-16 items-center justify-between gap-2 border-b border-line bg-white/95 px-3 backdrop-blur sm:px-4 lg:px-8">
+          <div className="flex min-w-0 items-center gap-2">
+            <button
+              type="button"
+              aria-label="Abrir menu"
+              onClick={() => setMobileMenuOpen(true)}
+              className="grid h-10 w-10 shrink-0 place-items-center rounded-md border border-line bg-white text-ink lg:hidden"
+            >
+              <Menu size={20} />
+            </button>
+            <div className="min-w-0">
+              <p className="truncate text-xs font-semibold uppercase text-muted">
+                {role === "staff" ? "Vista Staff" : "Vista Operador"}
+              </p>
+              <h1 className="truncate text-lg font-bold text-ink sm:text-xl">{title}</h1>
+              {role === "operator" && profile ? (
+                <p className="mt-0.5 truncate text-xs font-semibold text-brand-700">
+                  Operador: {profile.fullName} · {profile.username}
+                </p>
+              ) : null}
+            </div>
           </div>
-          <div className="flex items-center gap-3">
-            <div className="hidden items-center gap-2 text-sm text-muted sm:flex">
+          <div className="flex shrink-0 items-center gap-2 sm:gap-3">
+            <div className="hidden items-center gap-2 text-sm text-muted md:flex">
               <span className="h-2 w-2 rounded-full bg-emerald-500" />
               {isSupabaseConfigured ? "Base central conectada" : "Modo local de respaldo"}
             </div>
@@ -274,7 +349,7 @@ export function AppLayout({
             <NotificationCenter role={role} />
           </div>
         </header>
-        <div className="p-4 lg:p-8">
+        <div className="p-3 pb-20 sm:p-4 lg:p-8 lg:pb-8">
           {showStaffPanelTabs ? (
             <div className="mb-5 rounded-md border border-line bg-white p-2">
               <div className="flex flex-wrap gap-2">
@@ -318,6 +393,28 @@ export function AppLayout({
           {children}
         </div>
       </main>
+
+      <nav className="fixed inset-x-0 bottom-0 z-30 border-t border-line bg-white/95 backdrop-blur lg:hidden">
+        <div className="flex overflow-x-auto">
+          {visibleNav.map((item) => {
+            const Icon = item.icon;
+            const baseHref = item.href.split("#")[0];
+            const active = pathname === baseHref;
+            return (
+              <Link
+                key={item.label}
+                href={item.href}
+                className={`flex min-w-[72px] flex-1 flex-col items-center gap-1 px-2 py-2 text-[10px] font-semibold ${
+                  active ? "text-brand-700" : "text-muted"
+                }`}
+              >
+                <Icon size={20} />
+                <span className="truncate w-full text-center">{item.label}</span>
+              </Link>
+            );
+          })}
+        </div>
+      </nav>
     </div>
   );
 }

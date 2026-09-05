@@ -200,7 +200,7 @@ export default function LoginPage() {
         </p>
       </section>
 
-      <section className="flex flex-1 items-center justify-center bg-soft p-6">
+      <section className="flex flex-1 items-center justify-center bg-soft p-4 sm:p-6">
         <div className="w-full max-w-md">
           <div className="mb-8 lg:hidden">
             <AppLogo />
@@ -259,11 +259,10 @@ export default function LoginPage() {
                   </button>
                 </div>
               </label>
-              <div className="flex items-center justify-between text-sm">
+              <div className="flex flex-wrap items-center justify-between gap-2 text-sm">
                 <label className="flex items-center gap-2 text-muted">
                   <input type="checkbox" className="h-4 w-4 rounded border-line" />
-                  Recordar sesion por 30 dias
-                </label>
+                  Recordar sesion por 30 dias</label>
                 <button type="button" className="font-semibold text-brand-600" onClick={requestPasswordReset} disabled={loading}>
                   Olvidaste tu contrasena?
                 </button>
