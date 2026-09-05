@@ -1747,26 +1747,26 @@ export default function StaffSchedulesPage() {
         </div>
         <div className="grid grid-cols-7 gap-px bg-line p-px">
           {["Lun", "Mar", "Mie", "Jue", "Vie", "Sab", "Dom"].map((dayName) => (
-            <div key={dayName} className="bg-soft p-2 text-center text-xs font-bold uppercase text-muted">{dayName}</div>
+            <div key={dayName} className="bg-soft p-1 text-center text-[10px] font-bold uppercase text-muted sm:p-2 sm:text-xs">{dayName}</div>
           ))}
           {Array.from({ length: (new Date(`${scheduleMonth}-01T00:00:00`).getDay() + 6) % 7 }).map((_, index) => (
-            <div key={`empty-${index}`} className="min-h-16 bg-white" />
+            <div key={`empty-${index}`} className="min-h-12 bg-white sm:min-h-16" />
           ))}
           {calendarDays.map((day) => {
             const changes = approvedShiftChangesByDate.get(day.date) || [];
             return (
-            <div key={day.date} className={`min-h-20 p-2 ${changes.length ? "bg-emerald-50 text-emerald-950" : day.isWorkDay ? "bg-brand-600 text-white" : "bg-white text-muted"}`}>
+            <div key={day.date} className={`min-h-14 p-1 sm:min-h-20 sm:p-2 ${changes.length ? "bg-emerald-50 text-emerald-950" : day.isWorkDay ? "bg-brand-600 text-white" : "bg-white text-muted"}`}>
               <div className="flex items-start justify-between gap-2">
-                <span className="text-lg font-bold">{day.day}</span>
-                <span className="text-xs font-semibold uppercase">{day.weekday}</span>
+                <span className="text-base font-bold sm:text-lg">{day.day}</span>
+                <span className="hidden text-xs font-semibold uppercase sm:block">{day.weekday}</span>
               </div>
-              <p className="mt-2 text-xs font-semibold">{day.isWorkDay ? "Trabajamos" : "Descanso"}</p>
-              {changes.slice(0, 2).map((change) => (
-                <p key={change.id} className={`mt-1 truncate rounded px-1.5 py-0.5 text-[11px] font-black ${change.color === "green" ? "bg-emerald-600 text-white" : "bg-blue-600 text-white"}`}>
+              <p className="mt-1 hidden text-xs font-semibold sm:block">{day.isWorkDay ? "Trabajamos" : "Descanso"}</p>
+              {changes.slice(0, 1).map((change) => (
+                <p key={change.id} className={`mt-0.5 hidden truncate rounded px-1.5 py-0.5 text-[10px] font-black sm:block sm:text-[11px] ${change.color === "green" ? "bg-emerald-600 text-white" : "bg-blue-600 text-white"}`}>
                   {change.color === "green" ? "Green" : "Blue"} · {change.operatorUsername || change.operator}: {change.replacementUser}
                 </p>
               ))}
-              {changes.length > 2 ? <p className="mt-1 text-[11px] font-black">+{changes.length - 2} cambios</p> : null}
+              {changes.length >0 ? <p className="mt-0.5 text-[10px] font-black sm:mt-1 sm:text-[11px]">{changes.length}+</p> : null}
             </div>
           );})}
         </div>

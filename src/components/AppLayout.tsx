@@ -318,7 +318,7 @@ export function AppLayout({
       ) : null}
 
       <main className="lg:pl-64">
-        <header className="sticky top-0 z-30 flex h-16 items-center justify-between gap-2 border-b border-line bg-white/95 px-3 backdrop-blur sm:px-4 lg:px-8">
+        <header className="sticky top-0 z-30 flex h-16 items-center justify-between gap-2 border-b border-line bg-white/95 px-3 pt-[env(safe-area-inset-top)] backdrop-blur sm:px-4 lg:px-8" style={{height: "calc(4rem + env(safe-area-inset-top))"}}>
           <div className="flex min-w-0 items-center gap-2">
             <button
               type="button"
@@ -394,8 +394,8 @@ export function AppLayout({
         </div>
       </main>
 
-      <nav className="fixed inset-x-0 bottom-0 z-30 border-t border-line bg-white/95 backdrop-blur lg:hidden">
-        <div className="flex overflow-x-auto">
+      <nav className="fixed inset-x-0 bottom-0 z-30 border-t border-line bg-white/95 backdrop-blur lg:hidden" style={{paddingBottom: "env(safe-area-inset-bottom)"}}>
+        <div className="flex overflow-x-auto snap-x snap-mandatory [scrollbar-width:none]">
           {visibleNav.map((item) => {
             const Icon = item.icon;
             const baseHref = item.href.split("#")[0];
@@ -404,7 +404,7 @@ export function AppLayout({
               <Link
                 key={item.label}
                 href={item.href}
-                className={`flex min-w-[72px] flex-1 flex-col items-center gap-1 px-2 py-2 text-[10px] font-semibold ${
+                className={`flex min-w-[76px] flex-1 snap-center flex-col items-center gap-1 px-2 py-2 text-[10px] font-semibold ${
                   active ? "text-brand-700" : "text-muted"
                 }`}
               >

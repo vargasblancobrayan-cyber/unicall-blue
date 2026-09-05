@@ -10,10 +10,47 @@
   box-sizing: border-box;
 }
 
+html {
+  min-height: 100%;
+  text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+
 body {
   min-height: 100vh;
+  min-height: 100dvh;
   background: #f4f7fb;
   color: #162033;
+  overscroll-behavior-y: none;
+}
+
+@media (max-width: 767.98px) {
+  input,
+  select,
+  textarea {
+    font-size: 16px;
+  }
+}
+
+.safe-popover-top {
+  top: calc(4rem + env(safe-area-inset-top));
+}
+
+@media (min-width: 640px) {
+  .safe-popover-top {
+    top: 3rem;
+  }
+}
+
+.safe-toast-bottom {
+  bottom: calc(5rem + env(safe-area-inset-bottom));
+}
+
+@media (min-width: 640px) {
+  .safe-toast-bottom {
+    bottom: 1.25rem;
+  }
 }
 
 html[data-app-theme="gray"] body {

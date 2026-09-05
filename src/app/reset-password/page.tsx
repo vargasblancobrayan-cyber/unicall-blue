@@ -98,7 +98,7 @@ export default function ResetPasswordPage() {
   }
 
   return (
-    <main className="flex min-h-screen items-center justify-center bg-soft p-4 sm:p-6">
+    <main className="flex min-h-dvh items-center justify-center bg-soft p-4 sm:p-6">
       <section className="card w-full max-w-md p-6">
         <AppLogo />
         <div className="mt-8">

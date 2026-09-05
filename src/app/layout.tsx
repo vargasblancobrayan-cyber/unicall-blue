@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { DM_Sans } from "next/font/google";
 import "./globals.css";
 
@@ -12,6 +12,13 @@ export const metadata: Metadata = {
   title: "Unicall Blue - Operaciones de Call Center",
   description:
     "Unicall Blue centraliza ventas, rechazos, jornadas, operadores y reportes de call center."
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+  themeColor: "#1d4ed8"
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
